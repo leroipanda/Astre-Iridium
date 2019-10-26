@@ -1,3 +1,5 @@
+Le serveur smtp de google autorise 100 Email par jour.
+
 Le mot de passe est un mot de passe application :
 
 https://support.google.com/accounts/answer/185833?hl=fr
