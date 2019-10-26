@@ -1,4 +1,4 @@
-Le mot de passe est un mote de passe application :
+Le mot de passe est un mot de passe application :
 
 https://support.google.com/accounts/answer/185833?hl=fr
 
