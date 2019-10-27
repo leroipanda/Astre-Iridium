@@ -1,6 +1,7 @@
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.IOException;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -28,38 +29,22 @@ public class MainProcess {
             System.out.print("Entrez votre mot de passe application : ");
             mdp = scan.next();
 
-            Session session = Session.getInstance(prop,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, mdp);
-                    }
-                });
+            ReadEmail reader = new ReadEmail(username);
 
-            try {
-                System.out.print("Adresse destination : ");
-                dest = scan.next();
-                Message message = new MimeMessage(session);
-                message.setFrom(new InternetAddress(username));
-                message.setRecipients(
-                    Message.RecipientType.TO,
-                    InternetAddress.parse("louis.blenner@gmail.com")
-                );
-                System.out.print("Sujet : ");
-                String suj = scan.next();
-                System.out.print("Message : ");
-                String msg = scan.next();
-                message.setSubject(suj);
-                message.setText(msg);
+            reader.read(username,mdp);
 
-                Transport.send(message);
+            System.out.print("Adresse destination : ");
+            dest = scan.next();
+            System.out.print("Sujet : ");
+            String suj = scan.next();
+            System.out.print("Message : ");
+            String msg = scan.next();
 
-                System.out.println("Succés");
+            SendMail sender = new SendMail();
+            sender.send(username,mdp,dest,suj,msg);
 
-            } catch (AuthenticationFailedException e) {
-                System.out.println("Authentification échoué");
-            } catch (MessagingException e) {
-                e.printStackTrace();
-            }
+            System.out.println("Succés");
+
         }
     }
 }
