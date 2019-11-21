@@ -28,7 +28,7 @@ public class MainProcess {
             username = scan.next();
             System.out.print("Entrez votre mot de passe application : ");
             mdp = scan.next();
-
+            
             ReadEmail reader = new ReadEmail(username);
 
             reader.read(username,mdp);
@@ -39,11 +39,13 @@ public class MainProcess {
             String suj = scan.next();
             System.out.print("Message : ");
             String msg = scan.next();
-
+            System.out.print("Attachment (file path) : ");
+            String atcm = scan.next();
+            
             SendMail sender = new SendMail();
-            sender.send(username,mdp,dest,suj,msg);
+            sender.send(username,mdp,dest,suj,msg,atcm);
 
-            System.out.println("Succés");
+            System.out.println("Success");
 
         }
     }
