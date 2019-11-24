@@ -35,7 +35,7 @@ public class ReadEmail {
         try {
             // 4. Get the POP3 store provider and connect to the store.
             Store store = session.getStore("imaps");
-            store.connect("pop.gmail.com", "nicolaimpe@gmail.com", mdp);
+            store.connect("pop.gmail.com", username, mdp);
 
             /* Affiche les folder dispo sur la boite
             Folder[] f = store.getFolder("[Gmail]").list();
@@ -44,7 +44,7 @@ public class ReadEmail {
             */
 
             // 5. Get folder and open the INBOX folder in the store.
-            Folder inbox = store.getFolder("[Gmail]/Tous les messages");
+            Folder inbox = store.getFolder("[Gmail]/Tutti i messaggi");
             inbox.open(Folder.READ_ONLY);
 
             // 6. Retrieve the messages from the folder.
@@ -57,7 +57,7 @@ public class ReadEmail {
                 Address[] froms = messages[i].getFrom();
                 String emailaddr = froms == null ? null : ((InternetAddress) froms[0]).getAddress();
 
-                if (emailaddr.equals("nicolaimpe@gmail.com")){
+                if (emailaddr.equals(username)){
                     Message message = messages[i];
                     System.out.println(getTextFromMessage(message));
                     msgVu = true;
