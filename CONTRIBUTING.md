@@ -152,3 +152,11 @@ Two main branches are used for every repository: *dev* and *master*. Each time a
 A merge request shall be *assigned* to one person who will effectively perform the merge operation. Additionally, one or more *approvers* who will review the changes shall be defined by adding their name in the 'Approvers' field; mandatory approvers shall be made clearly visible in the description of the merge request by the `Required approvers: ` mention.
 
 ![alt text](docs/git_workflow.png "Scheme of the git workflow")
+
+### Git configuration
+
+Set up easy git log with:
+```
+git alias tree "git log --all --color --oneline --decorate"
+```
+
